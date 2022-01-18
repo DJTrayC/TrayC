@@ -1,0 +1,30 @@
+# Remember to also update the GitHub Actions configuration, as appropriate:
+#   cc-legal-tools-app/.github/workflows/pre-commit.yml
+
+version: "3.6"
+
+services:
+
+  app:
+    build: .
+    command: ./manage.py runserver 0.0.0.0:8000
+    environment:
+      - DJANGO_SETTINGS_MODULE=cc_legal_tools.settings.local
+    # see Dockerfile
+    image: cc_legal_tools
+    ports:
+      - "8000:8000"
+    restart: always
+    volumes:
+      - .:/home/cc
+      - ../cc-legal-tools-data:/home/cc-legal-tools-data
+
+  static:
+    # https://hub.docker.com/_/nginx
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - ../cc-legal-tools-data/config/:/etc/nginx/conf.d:ro
+      - ../cc-legal-tools-data/docs/:/usr/share/nginx/html:ro

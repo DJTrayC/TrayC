@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Babel = "*"
+beautifulsoup4 = "*"
+dealer = "*"
+Django = ">=3.2,<3.3"
+colorlog = "*"
+GitPython = "*"
+lxml = "*"  # For use by beautifulsoup4 (but not a stated dependency)
+polib = "*"
+python-dateutil = "*"
+PyYAML = "*"
+transifex-python = "*"
+whitenoise = "*"
+
+[dev-packages]
+black = "==21.12b0"
+coverage = "*"
+django-debug-toolbar = "*"
+factory-boy = "*"
+flake8 = "*"
+isort = "*"
+link-checker = {file = "https://github.com/creativecommons/cc-link-checker/archive/v2020.09.1.zip"}
+pre-commit = "*"
+tblib = "*"
+
+[requires]
+python_version = "3.9"
